@@ -1,46 +1,41 @@
-## Creates a cache matrix and computes its inverse
+## The following functions   are used to create a cache matrix and compute its inverse
 
-## This function creates a special matrix object that can cache its inverse.  
+## makeCacheInverse is a function that will
+##   1. Set the value of the matrix
+##   2. Get the value of the matrix
+##   3. Set the value of the matrix inverse
+##   4. Get the value of the matrix inverse
 
-makeCacheMatrix <- function(x = matrix()) 
-        m <- NULL
+makeCacheMatrix <- function(x = matrix()) {
+        inv <- NULL
         set <- function(y) {
                 x <<- y
-                m <<- NULL
+                inv <<- NULL
         }
-        get <- function() x
-        setinverse <- function(inverse) m <<- inverse
-        getinverse <- function() m
-        list(set = set, get = get,makeCacheMatrix <- function(x = matrix()) 
-        m <- NULL
-        set <- function(y) {
-                x <<- y
-                m <<- NULL
+        get <- function() { x
+        setinverse <- function(inverse) inv<<- inverse
+        getinverse <- function() inv
+        list(set = set, get = get, setinverse=setinverse, getinverse=getinverse) 
+        
         }
-        get <- function() x
-        setinverse <- function(inverse) m <<- mean
-        getinverse<- function() m
-        list(set = set, get = get,
-             setinverse = setinverse,
-             getinverse = getinverse)
+        
 }
            
 
 
 ## This function computes the inverse of the special matrix returned by makeCacheMatrix.
 ## If the inverse has already been calculated(and the matrix has not changed), then cacheSolve
-## should retrieve the inverse from the cache.
+## should retrieve the inverse from the cache.   Function assumes that the matrix is always invertible
 
-cacheSolve <- function(x, ...) { Solve(x)
-        ## Return a matrix that is the inverse of 'x'
-}
+
 cacheSolve <- function(x, ...) {
-        m <- x$getinverse()
-        if(!is.null(m)) {
+        inv <- x$getinverse()
+        if(!is.null(inv)) {
                 message("getting cached data")
-                return(m)
+                return(inv)
         }
         data <- x$get()
-        m <- Solve(data, ...)
-        x$setinverse(m)
-        m
+        inv <- Solve(data, ...)
+        x$setinverse(inv)
+        inv
+        }
