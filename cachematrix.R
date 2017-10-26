@@ -1,4 +1,4 @@
-## The following functions   are used to create a cache matrix and compute its inverse
+S## The following functions   are used to create a cache matrix and compute its inverse
 
 ## makeCacheInverse is a function that will
 ##   1. Set the value of the matrix
@@ -23,8 +23,8 @@ makeCacheMatrix <- function(x = matrix()) {
            
 
 
-## This function computes the inverse of the special matrix returned by makeCacheMatrix.
-## If the inverse has already been calculated(and the matrix has not changed), then cacheSolve
+## cacheSolv ecomputes the inverse of the special matrix returned by makeCacheMatrix.
+## If the inverse has  already been calculated(and the matrix has not changed), then cacheSolve
 ## should retrieve the inverse from the cache.   Function assumes that the matrix is always invertible
 
 
